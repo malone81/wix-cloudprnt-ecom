@@ -1,4 +1,4 @@
-import { printFoodOrder } from "cloudprnt-wix-plugin";
+import { printFoodOrder } from "wix-cloudprnt-ecom";
 
 export async function wixEcom_onOrderApproved(event) {
   const order = event?.data?.order;

@@ -1,6 +1,6 @@
 {
   "name": "wix-cloudprnt-ecom",
-  "version": "0.0.2-alpha",
+  "version": "0.0.31-alpha",
   "description": "Plugin for Wix to print orders through CloudPRNT & SPO",
   "main": "index.js",
   "scripts": {

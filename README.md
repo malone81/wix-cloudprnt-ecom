@@ -4,6 +4,12 @@ This plugin can be used to automatically print order tickets from Wix sites usin
 This is **not** an official package from Star Micronics or Wix.
 Both Wix and StarPrinter.Online (SPO) will require paid subscriptions.
 
+## Usage
+
+```js
+import { printFoodOrder } from "wix-cloudprnt-ecom";
+```
+
 ## Requirements
 
 - **Star CloudPRNT Printer** - https://star-emea.com/products/cloudprnt/ -> View Models - The printer must be CloudPRNT compatible.
@@ -46,10 +52,12 @@ Finally, you can use the plugin code:
 - On your Wix Dashboard, click on the **'Home'** tab.
 - Click **'Edit Site'**.
 - Turn **Dev Mode On**.
-- On the left navigation bar, click **‘Public & Backend’**.
-- If you don't have an **events.js** file, create one by clicking on the + symbol next to *Backend* and select 'Add .js file' - you must name it **events.js**.
+- On the left navigation bar, click **Code**, then **‘Public & Backend’**.
+- Navigate to the **Packages & Apps** section and next to _npm_ click the + symbol then "Install packages from npm".
+- Search for "wix-cloudprnt-ecom" and click install. Once installed, you can use the package within your backend code, such as the events.js file:
+- If you don't have an **events.js** file, create one by clicking on the + symbol next to _Backend_ in the _Backend & Public_ section and select 'Add .js file' - you must name it **events.js**.
 - If you have an **events.js** file already, make a backup.
-- Copy the contents of **events.js** found in this repo into your **events.js** file. 
+- Copy the contents of **events.js** found in this repo into your **events.js** file. This will allow you to print the order when it is approved.
 - Click **‘Publish’** in the top right corner.
 
 You should now be able to create an order (manually in the dashboard, or through the website) and the ticket will print.

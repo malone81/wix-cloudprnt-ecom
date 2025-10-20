@@ -6,8 +6,39 @@ Both Wix and StarPrinter.Online (SPO) will require paid subscriptions.
 
 ## Usage
 
+Import using CommonJS:
+
+```js
+const printFoodOrder = require("wix-cloudprnt-ecom");
+```
+
+ES Modules:
+
 ```js
 import { printFoodOrder } from "wix-cloudprnt-ecom";
+```
+
+Expects an order object to be passed in
+
+```js
+const result = await printFoodOrder(order);
+```
+
+In Wix, there are multiple triggers that can be used - I recommend _wixEcom_onOrderApproved_
+
+```js
+import { printFoodOrder } from "wix-cloudprnt-ecom";
+
+export async function wixEcom_onOrderApproved(event) {
+  const order = event?.data?.order;
+  if (!order) return;
+  try {
+    const result = await printFoodOrder(order);
+    console.log(result);
+  } catch (err) {
+    console.warn("Failed to print order:", err);
+  }
+}
 ```
 
 ## Requirements

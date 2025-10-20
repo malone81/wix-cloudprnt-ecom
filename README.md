@@ -18,13 +18,7 @@ ES Modules:
 import { printFoodOrder } from "wix-cloudprnt-ecom";
 ```
 
-Expects an order object to be passed in
-
-```js
-const result = await printFoodOrder(order);
-```
-
-In Wix, there are multiple triggers that can be used - I recommend _wixEcom_onOrderApproved_
+In Wix, there are multiple triggers that can be used - I recommend \_wixEcom_onOrderApproved which returns an event that contains the order object.
 
 ```js
 import { printFoodOrder } from "wix-cloudprnt-ecom";

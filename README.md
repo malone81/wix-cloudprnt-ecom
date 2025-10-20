@@ -2,7 +2,7 @@
 
 This plugin can be used to automatically print order tickets from Wix sites using a Star printer.
 This is **not** an official package from Star Micronics or Wix.
-Both Wix and StarPrinter.Online (SPO) will require paid subscriptions.
+Both Wix and StarPrinter.Online (SPO) require paid subscriptions.
 
 ## Usage
 

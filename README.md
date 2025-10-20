@@ -47,12 +47,13 @@ Finally, you can use the plugin code:
 - Click **'Edit Site'**.
 - Turn **Dev Mode On**.
 - On the left navigation bar, click **‘Public & Backend’**.
-- If you don't have an **events.js** file, create one by clicking on the + symbol next to *Backend* and select 'Add .js file' - make sure to name it **events.js** 
-- Copy the contents of **events.js** found in this repo into your **events.js** file.
+- If you don't have an **events.js** file, create one by clicking on the + symbol next to *Backend* and select 'Add .js file' - you must name it **events.js**.
+- If you have an **events.js** file already, make a backup.
+- Copy the contents of **events.js** found in this repo into your **events.js** file. 
 - Click **‘Publish’** in the top right corner.
 
 You should now be able to create an order (manually in the dashboard, or through the website) and the ticket will print.
 
-## Support
+## Questions & Issues
 
-For support, email olekdonkey@gmail.com
+For any questions or issues, leave a message on GitHub.

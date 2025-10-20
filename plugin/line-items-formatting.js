@@ -1,4 +1,4 @@
-import { itemModifiers } from "wix-restaurants.v2";
+const { itemModifiers } = require("wix-restaurants.v2");
 
 const MAX_LINE_CHARS = 35;
 const INDENT = 50;
@@ -8,7 +8,7 @@ async function getModifier(modifierId) {
   return result;
 }
 
-export async function createOrderLineItems(order) {
+async function createOrderLineItems(order) {
   let orderLineItems = "";
   try {
     for (const item of order.lineItems) {
@@ -64,3 +64,7 @@ async function createItemModifiersMarkup(modifierNames) {
 function createItemOptionMarkup(option) {
   return `[column: left - ${option}; indent ${INDENT}]\n`;
 }
+
+module.exports = {
+  createOrderLineItems,
+};

@@ -1,5 +1,5 @@
-import { secrets } from "wix-secrets-backend.v2";
-import { elevate } from "wix-auth";
+const { secrets } = require("wix-secrets-backend.v2");
+const { elevate } = require("wix-auth");
 
 const elevatedGetSecretValue = elevate(secrets.getSecretValue);
 
@@ -12,17 +12,23 @@ async function getSecretValue(name) {
   }
 }
 
-export async function getStarDeviceId() {
+async function getStarDeviceId() {
   const value = await getSecretValue("STAR_DEVICE_ID");
   return value;
 }
 
-export async function getStarApiKey() {
+async function getStarApiKey() {
   const value = await getSecretValue("STAR_API_KEY");
   return value;
 }
 
-export async function getStarDeviceGroup() {
+async function getStarDeviceGroup() {
   const value = await getSecretValue("STAR_DEVICE_GROUP");
   return value;
 }
+
+module.exports = {
+  getStarDeviceId,
+  getStarApiKey,
+  getStarDeviceGroup,
+};

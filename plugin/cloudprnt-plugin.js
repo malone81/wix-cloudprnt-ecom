@@ -1,4 +1,4 @@
-import { getStarDeviceId, getStarDeviceGroup, getStarApiKey } from "./star-secrets.js";
+const { getStarDeviceId, getStarDeviceGroup, getStarApiKey } = require("./star-secrets");
 
 const starUrl = (deviceGroup, deviceId) => `https://api.starprinter.online/v1/a/${deviceGroup}/d/${deviceId}/q`;
 
@@ -20,7 +20,7 @@ function getStarRequestSettings(apiKey, jobName, starMarkup) {
  * @param {string} jobName - track print jobs by SPO
  * @returns {Promise<any|Error>} - resolves to HTTP response or an error.
  */
-export async function sendToSPO(starMarkup, jobName) {
+async function sendToSPO(starMarkup, jobName) {
   const apiKey = await getStarApiKey();
   const deviceId = await getStarDeviceId();
   const deviceGroup = await getStarDeviceGroup();
@@ -35,3 +35,5 @@ export async function sendToSPO(starMarkup, jobName) {
     return { error: true, message: `Could not make request: ${err.message}` };
   }
 }
+
+module.exports = { sendToSPO };

@@ -1,5 +1,5 @@
-import { getLocalOrderTime } from "./date-utilities.js";
-import {
+const { getLocalOrderTime } = require("./date-utilities");
+const {
   getOrderNumber,
   getNumberOfItems,
   getPaymentStatus,
@@ -7,17 +7,18 @@ import {
   getDeliveryMethod,
   getEstimatedDeliveryTime,
   createDeliverySection,
-} from "./order.js";
-import { createOrderLineItems } from "./line-items-formatting.js";
-import wixSiteBackend from "wix-site-backend";
-import { foodOrderReceiptTemplate } from "./stm-templates.js";
-import { sendToSPO } from "./cloudprnt-plugin.js";
+} = require("./order");
+
+const { createOrderLineItems } = require("./line-items-formatting");
+const wixSiteBackend = require("wix-site-backend");
+const { foodOrderReceiptTemplate } = require("./stm-templates");
+const { sendToSPO } = require("./cloudprnt-plugin");
 
 /**
  * Deconstruct the order object and fill in the markup template
  * @param {Object} order - order details from Wix
  */
-export async function formatFoodOrderReceipt(order) {
+async function formatFoodOrderReceipt(order) {
   const orderNumber = getOrderNumber(order);
   const paymentStatus = getPaymentStatus(order);
   const totalPrice = getTotalPrice(order);
@@ -50,7 +51,7 @@ export async function formatFoodOrderReceipt(order) {
 //  * @param {Object} order - order details from Wix
 //  * @returns {Promise<any>} - resolves to HTTP response or an error.
 //  */
-export async function printFoodOrder(order) {
+async function printFoodOrder(order) {
   try {
     const starMarkup = await formatFoodOrderReceipt(order);
     const printResponse = await sendToSPO(starMarkup, order.number);
@@ -59,3 +60,7 @@ export async function printFoodOrder(order) {
     return { error: true, message: err.message };
   }
 }
+module.exports = {
+  formatFoodOrderReceipt,
+  printFoodOrder,
+};

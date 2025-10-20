@@ -1,0 +1,27 @@
+{
+  "name": "wix-cloudprnt-ecom",
+  "version": "0.0.2-alpha",
+  "description": "Plugin for Wix to print orders through CloudPRNT & SPO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malone81/wix-cloudprnt-ecom.git"
+  },
+  "keywords": [
+    "wix",
+    "cloudprnt",
+    "starprinter",
+    "star",
+    "cloud",
+    "printing"
+  ],
+  "author": "malone81",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/malone81/wix-cloudprnt-ecom/issues"
+  },
+  "homepage": "https://github.com/malone81/wix-cloudprnt-ecom#readme"
+}

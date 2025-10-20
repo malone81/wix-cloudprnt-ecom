@@ -1,15 +1,15 @@
-import { Permissions, webMethod } from "wix-web-module";
-import wixSiteBackend from "wix-site-backend";
+const { Permissions, webMethod } = require("wix-web-module");
+const wixSiteBackend = require("wix-site-backend");
 
-export const getLocale = webMethod(Permissions.Anyone, () => {
+const getLocale = webMethod(Permissions.Anyone, () => {
   return wixSiteBackend.generalInfo.getLocale();
 });
 
-export const getTimeZone = webMethod(Permissions.Anyone, () => {
+const getTimeZone = webMethod(Permissions.Anyone, () => {
   return wixSiteBackend.generalInfo.getTimeZone();
 });
 
-export async function getLocalOrderTime(date) {
+async function getLocalOrderTime(date) {
   if (!date) return "-";
   const locale = await getLocale();
   const timeZone = await getTimeZone();
@@ -17,7 +17,6 @@ export async function getLocalOrderTime(date) {
   const options = {
     timeZone,
     day: "2-digit",
-
     year: "numeric",
     month: "short",
     hour: "numeric",
@@ -27,3 +26,9 @@ export async function getLocalOrderTime(date) {
   const localDateTime = new Intl.DateTimeFormat(`${locale.languageCode}-${locale.country}`, options).format(utcDate);
   return localDateTime;
 }
+
+module.exports = {
+  getLocale,
+  getTimeZone,
+  getLocalOrderTime,
+};

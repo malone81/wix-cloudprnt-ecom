@@ -1,4 +1,4 @@
-export const foodOrderReceiptTemplate = (
+const foodOrderReceiptTemplate = (
   businessName,
   orderNumber,
   timeStamp,
@@ -61,15 +61,21 @@ export const foodOrderReceiptTemplate = (
     [cut: feed; partial]
     `;
 
-export const contactDetailsTemplate = (firstName, lastName, phone) =>
+const contactDetailsTemplate = (firstName, lastName, phone) =>
   `
     ${firstName} ${lastName}
     ${phone}
     `;
 
-export const deliveryAddressTemplate = (addressLine1 = "", addressLine2, city = "", postalCode = "") =>
+const deliveryAddressTemplate = (addressLine1 = "", addressLine2, city = "", postalCode = "") =>
   `
     ${addressLine1}${addressLine2 && `\n${addressLine2}`}
     ${city}
     ${postalCode}
     `;
+
+module.exports = {
+  foodOrderReceiptTemplate,
+  contactDetailsTemplate,
+  deliveryAddressTemplate,
+};

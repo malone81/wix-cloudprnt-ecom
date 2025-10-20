@@ -1,21 +1,22 @@
-import { contactDetailsTemplate, deliveryAddressTemplate } from "./stm-templates.js";
-export function getOrderNumber(order) {
+const { contactDetailsTemplate, deliveryAddressTemplate } = require("./stm-templates");
+
+function getOrderNumber(order) {
   return order.number ?? "#####";
 }
 
-export function getPaymentStatus(order) {
+function getPaymentStatus(order) {
   return order.paymentStatus ?? "MISSING PAYMENT STATUS";
 }
 
-export function getTotalPrice(order) {
+function getTotalPrice(order) {
   return order.priceSummary?.totalPrice?.formattedAmount ?? "MISSING PRICE";
 }
 
-export function getDeliveryMethod(order) {
+function getDeliveryMethod(order) {
   return order?.shippingInfo?.deliveryOption?.toUpperCase() ?? "MANUAL ORDER";
 }
 
-export function getNumberOfItems(order) {
+function getNumberOfItems(order) {
   if (!order?.lineItems || !Array.isArray(order.lineItems)) {
     console.warn("Invalid or missing lineItems");
     return 0;
@@ -24,14 +25,14 @@ export function getNumberOfItems(order) {
   return order.lineItems.reduce((acc, item) => acc + item.quantity, 0);
 }
 
-export function getEstimatedDeliveryTime(order) {
+function getEstimatedDeliveryTime(order) {
   return order.shippingInfo?.logistics?.deliveryTime ?? "-";
 }
 
-export function createDeliverySection(order) {
+function createDeliverySection(order) {
   let deliverySection = "";
 
-  const { firstName = "", lastName = "", phone = "" } = order.billingInfo?.contactDetails;
+  const { firstName = "", lastName = "", phone = "" } = order.billingInfo?.contactDetails || {};
   deliverySection += contactDetailsTemplate(firstName, lastName, phone);
 
   const address = order.shippingInfo?.logistics?.shippingDestination?.address;
@@ -42,3 +43,13 @@ export function createDeliverySection(order) {
 
   return deliverySection;
 }
+
+module.exports = {
+  getOrderNumber,
+  getPaymentStatus,
+  getTotalPrice,
+  getDeliveryMethod,
+  getNumberOfItems,
+  getEstimatedDeliveryTime,
+  createDeliverySection,
+};
